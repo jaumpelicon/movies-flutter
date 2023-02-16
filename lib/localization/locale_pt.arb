@@ -1,0 +1,31 @@
+{
+  "@@locale": "pt",
+  "appTitle": "Jeraflix",
+  "homeTabBottomInputTitle": "Inicial",
+  "searchTabBottomInputTitle": "Buscar",
+  "favoriteTabBottomInputTitle": "Favoritos",
+  "knowMoreInputTitle": "Saiba mais",
+  "criticallyAcclaimedTitle": "Aclamados pela crítica",
+  "movieRatingItemTitleLabel": "IMDb {rating}",
+  "@movieRatingItemTitleLabel": {
+    "placeholders": {      
+      "rating": {}
+    }
+  },
+  "yourMovieShimmerTitle": "Seu filme",
+  "errorScreenTitle": "Algo deu errado!",
+  "checkYourConnectionMessage": "Cheque sua conexão!",
+  "tryAgainMessage": "E tente novamente ao atualizar a tela",
+  "releaseDateTitle": "Data de lançamento:",
+  "overviewTitle": "Sinopse",
+  "searchMovieInputTitle": "Pesquisar filme",
+  "trySearchMovieHintLabel": "Tente buscar por um filme",
+  "favoriteMoviesTitle": "Favoritos:",
+  "successAddFavoriteMessage": "Filme adicionado com sucesso !",
+  "unavailableMovieTitle": "Titulo indisponível !",
+  "overviewUnavailableTitle": "Sinopse indisponível !",
+  
+  "mappingFailureError": "Algo deu errado, estamos trabalhando nisso!",
+  "requestError": "Aconteceu um erro inesperado, estamos trabalhando nisso!",
+  "timeoutError": "O tempo de requisição esgotou, tente novamente mais tarde."
+}

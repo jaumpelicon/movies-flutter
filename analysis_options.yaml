@@ -1,0 +1,20 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    avoid_void_async: true
+    unawaited_futures: true
+    eol_at_end_of_file: true
+    prefer_final_locals: true
+    directives_ordering: true
+    cancel_subscriptions: true
+    prefer_single_quotes: true
+    unnecessary_statements: true
+    prefer_relative_imports: true
+    omit_local_variable_types: true
+    always_declare_return_types: true
+    prefer_null_aware_method_calls: true
+    avoid_redundant_argument_values: true
+    avoid_catches_without_on_clauses: true
+    avoid_positional_boolean_parameters: true
+    avoid_multiple_declarations_per_line: true
