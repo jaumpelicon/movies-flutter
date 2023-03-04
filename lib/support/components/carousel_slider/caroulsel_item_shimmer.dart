@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../localization/localize.dart';
+import '../../../localization/localize.dart';
 import '../../styles/application_colors.dart';
 
 class MovieCarouselShimmerItem extends StatelessWidget {

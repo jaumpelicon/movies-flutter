@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../../localization/localize.dart';
+import '../../../localization/localize.dart';
 import '../../styles/application_images.dart';
 import '../../styles/application_typography.dart';
 

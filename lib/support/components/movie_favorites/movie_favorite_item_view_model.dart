@@ -1,27 +1,21 @@
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
-import '../../../models/movies.dart';
+import '../../../features/models/movie_details.dart';
 import '../../extension/extension.dart';
-import '../movie_item_components/movie_item_view_model.dart';
-import 'movie_search_item_view.dart';
+import 'movie_favorite_item.dart';
 
-abstract class MovieItemViewModelProtocol {
-  int get movieId;
-  double get movieRate;
-  String get movieTitle;
-  String get moviePosterImg;
-
-  void didTapMovie(int movieId);
+abstract class MovieItemViewModelDelegate {
+  void didTapMovie({required int movieId});
 }
 
-class MovieSearchItemViewModel extends MovieSearchItemViewModelProtocol {
-  final Movie _movie;
+class MovieFavoriteItemViewModel extends MovieFavoriteItemViewModelProtocol {
+  final MovieDetail _movie;
   final Localization l10n;
   final MovieItemViewModelDelegate? delegate;
 
-  MovieSearchItemViewModel({
+  MovieFavoriteItemViewModel({
     required this.l10n,
-    required Movie movie,
+    required MovieDetail movie,
     required this.delegate,
     required bool showRate,
   }) : _movie = movie;

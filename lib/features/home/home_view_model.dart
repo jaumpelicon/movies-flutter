@@ -1,10 +1,10 @@
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
 import '../models/movies.dart';
-import '../support/components/carousel_slider/carousel_item.dart';
-import '../support/components/carousel_slider/carousel_item_view_model.dart';
-import '../support/components/movie_item_components/movie_item.dart';
-import '../support/components/movie_item_components/movie_item_view_model.dart';
+import '../../support/components/carousel_slider/carousel_item.dart';
+import '../../support/components/carousel_slider/carousel_item_view_model.dart';
+import '../../support/components/movie_item_components/movie_item.dart';
+import '../../support/components/movie_item_components/movie_item_view_model.dart';
 import 'home_view_controler.dart';
 import 'useCases/get_most_popular_use_case.dart';
 import 'useCases/get_top_rated_use_case.dart';

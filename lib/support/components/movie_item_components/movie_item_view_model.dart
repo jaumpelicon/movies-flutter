@@ -1,20 +1,23 @@
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
-import '../../../models/movies.dart';
-import '../movie_item_components/movie_item_view_model.dart';
-import 'carousel_item.dart';
+import '../../../features/models/movies.dart';
+import 'movie_item.dart';
 
-class CarouselMovieItemViewModel extends CarouselMovieItemViewModelProtocol {
+abstract class MovieItemViewModelDelegate {
+  void didTapMovie({required int movieId});
+}
+
+class MovieItemViewModel extends MovieItemViewModelProtocol {
   final Movie _movie;
   final bool _showRate;
-  final MovieItemViewModelDelegate? delegate;
   final Localization l10n;
+  final MovieItemViewModelDelegate? delegate;
 
-  CarouselMovieItemViewModel({
+  MovieItemViewModel({
     required this.l10n,
     required Movie movie,
-    required bool showRate,
     required this.delegate,
+    required bool showRate,
   })  : _movie = movie,
         _showRate = showRate;
 
@@ -34,7 +37,7 @@ class CarouselMovieItemViewModel extends CarouselMovieItemViewModelProtocol {
   String get movieRate => l10n.movieRatingItemTitleLabel(_movie.rate.toStringAsFixed(1));
 
   @override
-  void didTapKnowMore(int movieId) {
+  void didTapMovie(int movieId) {
     delegate?.didTapMovie(movieId: movieId);
   }
 }

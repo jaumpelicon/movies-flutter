@@ -1,6 +1,6 @@
 import '../../../api/routes/movies_routes.dart';
+import '../../../support/helpers/server_errors.dart';
 import '../../models/movies.dart';
-import '../../support/helpers/server_errors.dart';
 
 typedef Success = void Function(List<Movie> movies);
 typedef Failure = void Function(ServerError error);

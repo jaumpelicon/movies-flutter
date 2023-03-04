@@ -2,7 +2,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../../../features/models/database/favorite_table.dart';
 import '../../../features/models/movie_details.dart';
-import '../../../features/support/helpers/server_errors.dart';
+import '../../../support/helpers/server_errors.dart';
 
 typedef Success = void Function(List<MovieDetail> movies);
 typedef Failure = void Function(ServerError error);

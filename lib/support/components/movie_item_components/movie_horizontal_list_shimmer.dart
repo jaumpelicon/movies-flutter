@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../localization/localize.dart';
+import '../../../localization/localize.dart';
 import '../../styles/application_colors.dart';
 import '../../styles/application_typography.dart';
 

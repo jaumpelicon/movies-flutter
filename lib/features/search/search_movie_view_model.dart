@@ -1,9 +1,9 @@
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
 import '../models/movies.dart';
-import '../support/components/movie_item_components/movie_item_view_model.dart';
-import '../support/components/movie_search/movie_search_item_view.dart';
-import '../support/components/movie_search/movie_search_item_view_model.dart';
+import '../../support/components/movie_item_components/movie_item_view_model.dart';
+import '../../support/components/movie_search/movie_search_item_view.dart';
+import '../../support/components/movie_search/movie_search_item_view_model.dart';
 import 'search_movie_view_controller.dart';
 import 'useCases/search_movie_use_case.dart';
 

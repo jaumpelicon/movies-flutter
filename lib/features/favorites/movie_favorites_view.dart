@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../localization/localize.dart';
-import '../support/components/movie_favorites/movie_favorite_item.dart';
-import '../support/components/movie_favorites/movie_favorite_list.dart';
-import '../support/components/movie_item_components/movie_horizontal_list_shimmer.dart';
-import '../support/styles/application_images.dart';
-import '../support/styles/application_typography.dart';
+import '../../support/components/movie_favorites/movie_favorite_item.dart';
+import '../../support/components/movie_favorites/movie_favorite_list.dart';
+import '../../support/components/movie_item_components/movie_horizontal_list_shimmer.dart';
+import '../../support/styles/application_images.dart';
+import '../../support/styles/application_typography.dart';
 
 abstract class MovieFavoritesViewModelProtocol extends ChangeNotifier {
   bool get hasError;

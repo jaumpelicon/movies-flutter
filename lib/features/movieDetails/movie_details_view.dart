@@ -3,12 +3,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../localization/localize.dart';
 import '../models/movie_details.dart';
-import '../support/components/movie_detail/circular_icon_button.dart';
-import '../support/components/movie_detail/overview_component.dart';
-import '../support/components/placeholders/error_screen.dart';
-import '../support/extension/extension.dart';
-import '../support/styles/application_colors.dart';
-import '../support/styles/application_typography.dart';
+import '../../support/components/movie_detail/circular_icon_button.dart';
+import '../../support/components/movie_detail/overview_component.dart';
+import '../../support/components/placeholders/error_screen.dart';
+import '../../support/extension/extension.dart';
+import '../../support/styles/application_colors.dart';
+import '../../support/styles/application_typography.dart';
 
 abstract class MovieDetailsViewModelProtocol with ChangeNotifier {
   bool get hasError;

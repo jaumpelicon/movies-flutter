@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../localization/localize.dart';
-import '../support/components/carousel_slider/caroulsel_item_shimmer.dart';
-import '../support/components/carousel_slider/carousel_item.dart';
-import '../support/components/carousel_slider/carousel_list.dart';
-import '../support/components/movie_item_components/movie_horizontal_list.dart';
-import '../support/components/movie_item_components/movie_horizontal_list_shimmer.dart';
-import '../support/components/movie_item_components/movie_item.dart';
-import '../support/components/placeholders/error_screen.dart';
-import '../support/styles/application_images.dart';
-import '../support/styles/application_typography.dart';
+import '../../support/components/carousel_slider/caroulsel_item_shimmer.dart';
+import '../../support/components/carousel_slider/carousel_item.dart';
+import '../../support/components/carousel_slider/carousel_list.dart';
+import '../../support/components/movie_item_components/movie_horizontal_list.dart';
+import '../../support/components/movie_item_components/movie_horizontal_list_shimmer.dart';
+import '../../support/components/movie_item_components/movie_item.dart';
+import '../../support/components/placeholders/error_screen.dart';
+import '../../support/styles/application_images.dart';
+import '../../support/styles/application_typography.dart';
 
 abstract class HomeViewModelProtocol with ChangeNotifier {
   bool get hasError;

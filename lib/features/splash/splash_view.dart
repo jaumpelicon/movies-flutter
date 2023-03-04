@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../support/styles/application_images.dart';
+import '../../support/styles/application_images.dart';
 
 abstract class SplashViewModelProtocol with ChangeNotifier {
   void onLoaded(LottieComposition composition);
@@ -9,7 +9,7 @@ abstract class SplashViewModelProtocol with ChangeNotifier {
 
 class SplashView extends StatelessWidget {
   final SplashViewModelProtocol viewModel;
-  
+
   const SplashView({super.key, required this.viewModel});
 
   @override

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../../../localization/localize.dart';
+import '../../localization/localize.dart';
 
 class ServerError {
   final String? _error;

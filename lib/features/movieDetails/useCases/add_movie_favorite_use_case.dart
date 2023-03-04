@@ -2,7 +2,7 @@ import 'package:flutter_gen/gen_l10n/localization.dart';
 
 import '../../../api/database/dao/favorite_dao.dart';
 import '../../models/movie_details.dart';
-import '../../support/helpers/server_errors.dart';
+import '../../../support/helpers/server_errors.dart';
 
 typedef Success = void Function(String movieResponse);
 typedef Failure = void Function(ServerError error);

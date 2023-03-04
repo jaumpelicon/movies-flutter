@@ -1,6 +1,6 @@
 import '../../../api/database/dao/favorite_dao.dart';
 import '../../models/movie_details.dart';
-import '../../support/helpers/server_errors.dart';
+import '../../../support/helpers/server_errors.dart';
 
 typedef Success = void Function(List<MovieDetail> movies);
 typedef Failure = void Function(ServerError error);

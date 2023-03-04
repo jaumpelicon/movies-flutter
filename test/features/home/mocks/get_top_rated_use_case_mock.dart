@@ -1,6 +1,6 @@
 import 'package:jeraflix_pelicom/features/home/useCases/get_top_rated_use_case.dart';
 import 'package:jeraflix_pelicom/features/models/movies.dart';
-import 'package:jeraflix_pelicom/features/support/helpers/server_errors.dart';
+import 'package:jeraflix_pelicom/support/helpers/server_errors.dart';
 
 class GetTopRatedMoviesUseCaseMock extends GetTopRatedMoviesUseCaseProtocol {
   ServerError? error;

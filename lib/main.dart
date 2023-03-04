@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
-import 'features/support/styles/application_themes.dart';
 import 'localization/localize.dart';
 import 'router/mobile_router.dart';
+import 'support/styles/application_themes.dart';
 
 void main() {
   runApp(const MyApp());
