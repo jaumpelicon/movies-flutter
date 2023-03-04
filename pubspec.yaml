@@ -6,7 +6,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.4 <3.0.0"
+  sdk: ">=2.18.3 <3.0.0"
 
 dependencies:
   flutter:
@@ -26,6 +26,7 @@ dependencies:
   intl: ^0.17.0
   sqflite: ^2.2.2
   path: ^1.8.2
+  mason: ^0.1.0-dev.47
 
 dev_dependencies:
   flutter_test:

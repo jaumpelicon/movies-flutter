@@ -1,0 +1,5 @@
+bricks:
+  hello: 0.1.0+1
+  model: ^0.6.0
+  feature_brick:
+    path: "bricks\\feature_brick"
