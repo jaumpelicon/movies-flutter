@@ -2,15 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../localization/localize.dart';
 import '../../styles/application_colors.dart';
 
 class MovieCarouselShimmerItem extends StatelessWidget {
   const MovieCarouselShimmerItem({super.key});
   @override
   Widget build(BuildContext context) {
-    final l10n = Localize.instance.l10n;
-
     return CarouselSlider(
       options: CarouselOptions(
         height: 400.0,

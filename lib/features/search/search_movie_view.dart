@@ -43,7 +43,7 @@ class SearchMovieView extends StatelessWidget {
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: SearchBar(l10n: l10n, getSearchMovies: viewModel.getSearchMovies),
+              child: CustomSearchBar(l10n: l10n, getSearchMovies: viewModel.getSearchMovies),
             ),
             const SizedBox(height: 4),
             _getSearchMoviesList(l10n)

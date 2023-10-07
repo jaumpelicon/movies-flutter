@@ -5,11 +5,11 @@ import '../../../extension/debouncer.dart';
 import '../../../styles/application_colors.dart';
 import '../../../styles/application_typography.dart';
 
-class SearchBar extends StatelessWidget {
+class CustomSearchBar extends StatelessWidget {
   final Localization l10n;
   final void Function(String query) getSearchMovies;
 
-  const SearchBar({
+  const CustomSearchBar({
     super.key,
     required this.l10n,
     required this.getSearchMovies,

@@ -19,7 +19,7 @@ class ServerError {
   }
 }
 
-extension DioErrorExtension on DioError {
+extension DioErrorExtension on DioException {
   ServerError asServerError() {
     try {
       final serverError = ServerError.fromMap(response?.data);
@@ -34,7 +34,7 @@ extension DioErrorExtension on DioError {
   ServerError _mapToServerError() {
     final error = this;
 
-    if (error.type == DioErrorType.connectTimeout) {
+    if (error.type == DioExceptionType.connectionError) {
       return ServerError(error: Localize.instance.l10n.timeoutError);
     }
 
