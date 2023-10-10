@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../localization/localize.dart';
 import '../favorites/di/movie_favorites_factory.dart';
 import '../home/di/home_factory.dart';
+import '../policy_terms/di/policy_terms_factory.dart';
 import '../search/di/search_movie_factory.dart';
 
 abstract class NavigationViewModelProtocol with ChangeNotifier {
@@ -15,7 +16,7 @@ class NavigationView extends StatelessWidget {
   final StatefulWidget _home = HomeFactory.home();
   final StatefulWidget _search = SearchMoviFactory.search();
   final StatefulWidget _favorites = MovieFavoritesFactory.favorites();
-  // final StatefulWidget _policy = PolicyTermsFactory.policyTerms();
+  final StatefulWidget _policy = PolicyTermsFactory.policyTerms();
 
   NavigationView({super.key, required this.viewModel});
 
@@ -28,11 +29,12 @@ class NavigationView extends StatelessWidget {
         return Scaffold(
           body: IndexedStack(
             index: viewModel.currentIndex,
-            children: [_home, _search, _favorites],
+            children: [_home, _search, _favorites, _policy],
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: viewModel.currentIndex,
             onTap: viewModel.didTapSelectedIndex,
+            type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: const Icon(Icons.home),
@@ -45,6 +47,10 @@ class NavigationView extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: const Icon(Icons.star),
                 label: l10n.favoriteTabBottomInputTitle,
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.menu),
+                label: 'Política',
               ),
             ],
           ),
