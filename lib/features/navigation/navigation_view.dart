@@ -15,6 +15,7 @@ class NavigationView extends StatelessWidget {
   final StatefulWidget _home = HomeFactory.home();
   final StatefulWidget _search = SearchMoviFactory.search();
   final StatefulWidget _favorites = MovieFavoritesFactory.favorites();
+  // final StatefulWidget _policy = PolicyTermsFactory.policyTerms();
 
   NavigationView({super.key, required this.viewModel});
 
