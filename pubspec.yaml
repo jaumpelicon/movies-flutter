@@ -1,9 +1,9 @@
-name: jeraflix_pelicom
+name: Pelimovies
 description: A new Flutter project.
 
 publish_to: "none"
 
-version: 1.0.0+2
+version: 1.0.0+4
 
 environment:
   sdk: ">=2.18.3 <3.0.0"
@@ -28,6 +28,8 @@ dependencies:
   path: ^1.8.2
   mason: ^0.1.0-dev.47
   webview_flutter: ^4.4.1
+  flutter_pdfview: ^1.3.2
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -39,4 +41,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/pdf/
     - shorebird.yaml

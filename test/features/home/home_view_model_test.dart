@@ -1,7 +1,7 @@
+import 'package:Pelimovies/features/home/home_view_model.dart';
+import 'package:Pelimovies/features/models/movies.dart';
 import 'package:flutter_gen/gen_l10n/localization.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:jeraflix_pelicom/features/home/home_view_model.dart';
-import 'package:jeraflix_pelicom/features/models/movies.dart';
 
 import '../../localization/localize_mock.dart';
 import 'mocks/get_most_popular_use_case_mock.dart';

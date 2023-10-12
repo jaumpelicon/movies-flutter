@@ -7,7 +7,7 @@ abstract class PolicyTermsViewModelProtocol extends ChangeNotifier {
 
 class PolicyTermsView extends StatelessWidget {
   final PolicyTermsViewModelProtocol viewModel;
-
+  // TODO adicionar pdfView no lugar
   const PolicyTermsView({super.key, required this.viewModel});
 
   @override
@@ -20,9 +20,7 @@ class PolicyTermsView extends StatelessWidget {
         child: ListenableBuilder(
             listenable: viewModel,
             builder: (_, __) {
-              return Expanded(
-                child: WebViewWidget(controller: viewModel.controller),
-              );
+              return WebViewWidget(controller: viewModel.controller);
             }),
       ),
     );

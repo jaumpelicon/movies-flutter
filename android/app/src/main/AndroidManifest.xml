@@ -2,7 +2,7 @@
     package="com.example.jeraflix_pelicom">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="jeraflix_pelicom"
+        android:label="Pelimovies"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

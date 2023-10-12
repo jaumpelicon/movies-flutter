@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../localization/localize.dart';
-import '../models/movie_details.dart';
 import '../../support/components/movie_detail/circular_icon_button.dart';
 import '../../support/components/movie_detail/overview_component.dart';
 import '../../support/components/placeholders/error_screen.dart';
+import '../../support/components/placeholders/loading_screen.dart';
 import '../../support/extension/extension.dart';
 import '../../support/styles/application_colors.dart';
 import '../../support/styles/application_typography.dart';
+import '../models/movie_details.dart';
 
 abstract class MovieDetailsViewModelProtocol with ChangeNotifier {
   bool get hasError;
@@ -46,7 +47,7 @@ class MovieDetailsView extends StatelessWidget {
     const movieRatingCalculation = 2;
 
     if (viewModel.isLoading) {
-      return const CircularProgressIndicator();
+      return const LoadingPlaceholder();
     }
     if (movieDetail != null) {
       return ListView(
@@ -145,6 +146,7 @@ class MovieDetailsView extends StatelessWidget {
           itemBuilder: (_, index) {
             final genderName = movieDetail.genders[index].name;
             return Container(
+              margin: const EdgeInsets.symmetric(horizontal: 4),
               padding: const EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
                 color: ApplicationColors.green1,

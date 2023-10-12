@@ -1,5 +1,5 @@
+import 'package:Pelimovies/localization/localize.dart';
 import 'package:flutter_gen/gen_l10n/localization.dart';
-import 'package:jeraflix_pelicom/localization/localize.dart';
 
 import 'localization_mock.dart';
 

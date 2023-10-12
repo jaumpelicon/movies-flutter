@@ -6,6 +6,7 @@ import '../../localization/localize.dart';
 import '../../support/components/movie_favorites/movie_favorite_item.dart';
 import '../../support/components/movie_favorites/movie_favorite_list.dart';
 import '../../support/components/movie_item_components/movie_horizontal_list_shimmer.dart';
+import '../../support/components/placeholders/empty_screen.dart';
 import '../../support/styles/application_images.dart';
 import '../../support/styles/application_typography.dart';
 
@@ -47,6 +48,12 @@ class MovieFavoritesView extends StatelessWidget {
 
     if (viewModel.isLoading) {
       return const MovieHorizontalListShimmer();
+    }
+
+    if (viewModel.favoritesMovies.isEmpty) {
+      return const EmptyPlaceholder(
+        description: 'Nenhum filme nos favorites foi encontrado :c',
+      );
     }
 
     return SafeArea(
