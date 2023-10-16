@@ -51,8 +51,9 @@ class MovieFavoritesView extends StatelessWidget {
     }
 
     if (viewModel.favoritesMovies.isEmpty) {
-      return const EmptyPlaceholder(
-        description: 'Nenhum filme nos favorites foi encontrado :c',
+      return EmptyPlaceholder(
+        title: l10n.favoriteMoviesTitle,
+        description: l10n.emptyFavoritesMessage,
       );
     }
 

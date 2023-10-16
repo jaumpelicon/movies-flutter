@@ -70,4 +70,7 @@ class LocalizationMock extends Localization {
 
   @override
   String get unavailableMovieTitle => 'Titulo indisponível !';
+
+  @override
+  String get emptyFavoritesMessage => 'Nenhum filme nos favorites foi encontrado :c';
 }
