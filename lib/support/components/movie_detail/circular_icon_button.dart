@@ -4,11 +4,13 @@ import '../../styles/application_colors.dart';
 
 class CircularIconButton extends StatelessWidget {
   final IconData icon;
+  final bool isSelected;
   final Function()? onTap;
 
   const CircularIconButton({
     super.key,
-    this.onTap,
+    required this.onTap,
+    required this.isSelected,
     required this.icon,
   });
 
@@ -27,7 +29,7 @@ class CircularIconButton extends StatelessWidget {
         child: Icon(
           icon,
           size: 22,
-          color: ApplicationColors.white,
+          color: isSelected ? ApplicationColors.green1 : ApplicationColors.white,
         ),
       ),
     );

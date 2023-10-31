@@ -7,7 +7,14 @@ import '../../styles/application_typography.dart';
 class EmptyPlaceholder extends StatelessWidget {
   final String title;
   final String description;
-  const EmptyPlaceholder({required this.title, required this.description, super.key});
+  final VoidCallback onRefreshScreen;
+
+  const EmptyPlaceholder({
+    required this.title,
+    required this.description,
+    required this.onRefreshScreen,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +48,18 @@ class EmptyPlaceholder extends StatelessWidget {
                 textAlign: TextAlign.center,
                 maxLines: 3,
                 style: ApplicationTypography.montserratSemiBoldWhite(14),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 44),
+              child: ElevatedButton(
+                onPressed: onRefreshScreen,
+                child: Text(
+                  'Recarregar',
+                  textAlign: TextAlign.center,
+                  maxLines: 3,
+                  style: ApplicationTypography.montserratSemiBoldWhite(14),
+                ),
               ),
             ),
             const Spacer(),

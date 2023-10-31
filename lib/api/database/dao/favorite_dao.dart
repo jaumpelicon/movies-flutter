@@ -8,6 +8,7 @@ typedef Success = void Function(List<MovieDetail> movies);
 typedef Failure = void Function(ServerError error);
 
 abstract class FavoriteDaoProtocol {
+  Future<void> removeMovieFavorite({required int movieId});
   Future<void> insertMovieFavorite({required MovieDetail movie});
 
   Future<List<MovieDetail>> getFavorites();
@@ -24,6 +25,15 @@ class FavoriteDao extends FavoriteDaoProtocol {
       FavoritesTable.tableName,
       movie.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  @override
+  Future<void> removeMovieFavorite({required int movieId}) async {
+    await _db.delete(
+      FavoritesTable.tableName,
+      where: '${FavoritesTable.idColumn} = ?',
+      whereArgs: [movieId],
     );
   }
 

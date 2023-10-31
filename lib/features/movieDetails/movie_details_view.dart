@@ -14,6 +14,7 @@ import '../models/movie_details.dart';
 abstract class MovieDetailsViewModelProtocol with ChangeNotifier {
   bool get hasError;
   bool get isLoading;
+  bool get isFavorite;
   String get errorMessage;
   MovieDetail? get movieInfos;
 
@@ -66,9 +67,10 @@ class MovieDetailsView extends StatelessWidget {
                 Positioned(
                   top: 16,
                   right: 16,
-                  child: InkWell(
+                  child: CircularIconButton(
+                    icon: Icons.favorite,
                     onTap: viewModel.favoriteMovie,
-                    child: const CircularIconButton(icon: Icons.favorite),
+                    isSelected: viewModel.isFavorite,
                   ),
                 ),
                 Positioned(

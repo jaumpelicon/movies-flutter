@@ -1,8 +1,8 @@
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
-import '../models/movie_details.dart';
 import '../../support/components/movie_favorites/movie_favorite_item.dart';
 import '../../support/components/movie_favorites/movie_favorite_item_view_model.dart';
+import '../models/movie_details.dart';
 import 'movie_favorites_controller.dart';
 import 'useCases/get_favorite_movies_use_case.dart';
 
@@ -72,6 +72,6 @@ class MovieFavoritesViewModel extends MovieFavoritesProtocol implements MovieIte
 
   @override
   void didTapMovie({required int movieId}) {
-    // TODO: implement didTapMovie
+    onTapMovie?.call(movieId);
   }
 }

@@ -54,6 +54,7 @@ class MovieFavoritesView extends StatelessWidget {
       return EmptyPlaceholder(
         title: l10n.favoriteMoviesTitle,
         description: l10n.emptyFavoritesMessage,
+        onRefreshScreen: viewModel.onRefresh,
       );
     }
 

@@ -19,6 +19,8 @@ abstract class HomeViewModelProtocol with ChangeNotifier {
   String get errorMessage;
   Future<void> onRefresh();
   List<MovieItemViewModelProtocol> get topRatedMoviesViewModels;
+  List<MovieItemViewModelProtocol> get upComingMoviesViewModels;
+
   List<CarouselMovieItemViewModelProtocol> get mostPopularMoviesCarouselViewModels;
 }
 
@@ -36,12 +38,9 @@ class HomeView extends StatelessWidget {
             body: CustomRefreshIndicator(
               onRefresh: viewModel.onRefresh,
               offsetToArmed: 120.0,
-              builder: ((
-                _,
-                child,
-                controller,
-              ) =>
-                  _swipeRefreshBuilderWidget(controller, child)),
+              builder: ((_, child, controller) {
+                return _swipeRefreshBuilderWidget(controller, child);
+              }),
               child: _placeholdersScreenWidget(),
             ),
           );
@@ -106,6 +105,15 @@ class HomeView extends StatelessWidget {
               ),
               const SizedBox(height: 28),
               _topRatedMoviesListWidget(),
+              Padding(
+                padding: const EdgeInsets.only(left: 32.0, top: 20.0),
+                child: Text(
+                  'O ques está por vir!',
+                  style: ApplicationTypography.montserratSemiBoldWhite(20),
+                ),
+              ),
+              const SizedBox(height: 28),
+              _upComingMoviesListWidget(),
             ],
           ),
         ),
@@ -120,6 +128,16 @@ class HomeView extends StatelessWidget {
 
     return MovieHorizontalList(
       viewModels: viewModel.topRatedMoviesViewModels,
+    );
+  }
+
+  Widget _upComingMoviesListWidget() {
+    if (viewModel.isLoading) {
+      return const MovieHorizontalListShimmer();
+    }
+
+    return MovieHorizontalList(
+      viewModels: viewModel.upComingMoviesViewModels,
     );
   }
 

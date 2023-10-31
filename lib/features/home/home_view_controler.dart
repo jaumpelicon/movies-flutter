@@ -5,8 +5,7 @@ import 'home_view.dart';
 
 abstract class HomeProtocol extends HomeViewModelProtocol {
   void Function(int id)? onTapMovie;
-  void getMostPopularMovies();
-  void getTopRatedMovies();
+  void loadContent();
 }
 
 class HomeViewController extends StatefulWidget {
@@ -23,8 +22,7 @@ class _HomeViewControllerState extends State<HomeViewController> {
   void initState() {
     super.initState();
     _bind();
-    widget.viewModel.getMostPopularMovies();
-    widget.viewModel.getTopRatedMovies();
+    widget.viewModel.loadContent();
   }
 
   @override

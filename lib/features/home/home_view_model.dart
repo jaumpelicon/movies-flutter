@@ -8,6 +8,7 @@ import '../models/movies.dart';
 import 'home_view_controler.dart';
 import 'useCases/get_most_popular_use_case.dart';
 import 'useCases/get_top_rated_use_case.dart';
+import 'useCases/get_up_coming_use_case.dart';
 
 class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
   String _errorMessage = '';
@@ -17,13 +18,17 @@ class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
   final Localization l10n;
   final _topRatedMovies = List<Movie>.empty(growable: true);
   final _mostPopularMovies = List<Movie>.empty(growable: true);
-  final GetMostPopularMoviesUseCaseProtocol getMostPopularMoviesUseCase;
+  final _upComingMovies = List<Movie>.empty(growable: true);
+
+  final GetUpComingMoviesUseCaseProtocol getUpComingMoviesUseCase;
   final GetTopRatedMoviesUseCaseProtocol getTopRatedMoviesUseCase;
+  final GetMostPopularMoviesUseCaseProtocol getMostPopularMoviesUseCase;
 
   HomeViewModel({
     required this.l10n,
-    required this.getMostPopularMoviesUseCase,
+    required this.getUpComingMoviesUseCase,
     required this.getTopRatedMoviesUseCase,
+    required this.getMostPopularMoviesUseCase,
   });
 
   @override
@@ -49,6 +54,18 @@ class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
   }
 
   @override
+  List<MovieItemViewModelProtocol> get upComingMoviesViewModels {
+    return _upComingMovies.map((movie) {
+      return MovieItemViewModel(
+        l10n: l10n,
+        movie: movie,
+        showRate: true,
+        delegate: this,
+      );
+    }).toList();
+  }
+
+  @override
   List<CarouselMovieItemViewModelProtocol> get mostPopularMoviesCarouselViewModels {
     if (_mostPopularMovies.length < 3) {
       return [];
@@ -64,12 +81,25 @@ class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
   }
 
   @override
+  void loadContent() {
+    onRefresh();
+  }
+
+  @override
+  Future<void> onRefresh() {
+    return Future.sync(() {
+      _getTopRatedMovies();
+      _getUpComingMovies();
+      _getMostPopularMovies();
+    });
+  }
+
+  @override
   void didTapMovie({required int movieId}) {
     onTapMovie?.call(movieId);
   }
 
-  @override
-  void getMostPopularMovies() {
+  void _getMostPopularMovies() {
     _setIsLoading(true);
 
     getMostPopularMoviesUseCase.execute(
@@ -86,8 +116,7 @@ class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
     );
   }
 
-  @override
-  void getTopRatedMovies() {
+  void _getTopRatedMovies() {
     _setIsLoading(true);
 
     getTopRatedMoviesUseCase.execute(
@@ -104,14 +133,25 @@ class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
     );
   }
 
+  void _getUpComingMovies() {
+    _setIsLoading(true);
+
+    getUpComingMoviesUseCase.execute(
+      success: (movies) {
+        _hasError = false;
+        _upComingMovies.addAll(movies);
+        _setIsLoading(false);
+      },
+      failure: (error) {
+        _hasError = true;
+        _errorMessage = error.description;
+        _setIsLoading(false);
+      },
+    );
+  }
+
   void _setIsLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
-  }
-
-  @override
-  Future<void> onRefresh() {
-    getTopRatedMovies();
-    return Future.sync(() => getMostPopularMovies());
   }
 }
