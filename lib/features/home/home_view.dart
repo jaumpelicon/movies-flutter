@@ -6,8 +6,8 @@ import '../../localization/localize.dart';
 import '../../support/components/carousel_slider/caroulsel_item_shimmer.dart';
 import '../../support/components/carousel_slider/carousel_item.dart';
 import '../../support/components/carousel_slider/carousel_list.dart';
-import '../../support/components/movie_item_components/movie_horizontal_list.dart';
-import '../../support/components/movie_item_components/movie_horizontal_list_shimmer.dart';
+import '../../support/components/movie_item_components/movie_horizontal_list/movie_horizontal_list.dart';
+import '../../support/components/movie_item_components/movie_horizontal_list/movie_horizontal_list_shimmer.dart';
 import '../../support/components/movie_item_components/movie_item.dart';
 import '../../support/components/placeholders/error_screen.dart';
 import '../../support/styles/application_images.dart';
@@ -20,7 +20,7 @@ abstract class HomeViewModelProtocol with ChangeNotifier {
   Future<void> onRefresh();
   List<MovieItemViewModelProtocol> get topRatedMoviesViewModels;
   List<MovieItemViewModelProtocol> get upComingMoviesViewModels;
-
+  List<MovieItemViewModelProtocol> get nowPlayingMoviesViewModels;
   List<CarouselMovieItemViewModelProtocol> get mostPopularMoviesCarouselViewModels;
 }
 
@@ -114,6 +114,15 @@ class HomeView extends StatelessWidget {
               ),
               const SizedBox(height: 28),
               _upComingMoviesListWidget(),
+              Padding(
+                padding: const EdgeInsets.only(left: 32.0, top: 20.0),
+                child: Text(
+                  'Nos cinemas !',
+                  style: ApplicationTypography.montserratSemiBoldWhite(20),
+                ),
+              ),
+              const SizedBox(height: 28),
+              _nowPlayingMoviesListWidget(),
             ],
           ),
         ),
@@ -131,12 +140,23 @@ class HomeView extends StatelessWidget {
     );
   }
 
+  Widget _nowPlayingMoviesListWidget() {
+    if (viewModel.isLoading) {
+      return const MovieHorizontalListShimmer();
+    }
+
+    return MovieHorizontalList(
+      viewModels: viewModel.nowPlayingMoviesViewModels,
+    );
+  }
+
   Widget _upComingMoviesListWidget() {
     if (viewModel.isLoading) {
       return const MovieHorizontalListShimmer();
     }
 
     return MovieHorizontalList(
+      isWhiteItem: true,
       viewModels: viewModel.upComingMoviesViewModels,
     );
   }

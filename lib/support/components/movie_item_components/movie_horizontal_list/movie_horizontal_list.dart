@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'movie_item.dart';
+import '../movie_item.dart';
+import '../movie_white_item.dart';
 
 class MovieHorizontalList extends StatelessWidget {
   final List<MovieItemViewModelProtocol> viewModels;
+  final bool isWhiteItem;
 
   const MovieHorizontalList({
-    super.key,
     required this.viewModels,
+    this.isWhiteItem = false,
+    super.key,
   });
 
   @override
@@ -17,7 +20,7 @@ class MovieHorizontalList extends StatelessWidget {
         maxHeight: 280,
       ),
       child: SizedBox(
-        height: 280,
+        height: isWhiteItem ? 200 : 280,
         child: ListView.builder(
           itemCount: viewModels.length,
           scrollDirection: Axis.horizontal,
@@ -27,12 +30,12 @@ class MovieHorizontalList extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 154,
+                constraints: BoxConstraints(
+                  maxWidth: isWhiteItem ? 320 : 154,
                 ),
                 child: SizedBox(
-                  width: 280,
-                  child: MovieItemView(viewModel: viewModel),
+                  width: isWhiteItem ? 320 : 280,
+                  child: isWhiteItem ? MovieWhiteItemView(viewModel: viewModel) : MovieItemView(viewModel: viewModel),
                 ),
               ),
             );

@@ -7,6 +7,7 @@ import '../../support/components/movie_item_components/movie_item_view_model.dar
 import '../models/movies.dart';
 import 'home_view_controler.dart';
 import 'useCases/get_most_popular_use_case.dart';
+import 'useCases/get_now_playing_use_case.dart';
 import 'useCases/get_top_rated_use_case.dart';
 import 'useCases/get_up_coming_use_case.dart';
 
@@ -19,16 +20,19 @@ class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
   final _topRatedMovies = List<Movie>.empty(growable: true);
   final _mostPopularMovies = List<Movie>.empty(growable: true);
   final _upComingMovies = List<Movie>.empty(growable: true);
+  final _nowPlayingMovies = List<Movie>.empty(growable: true);
 
   final GetUpComingMoviesUseCaseProtocol getUpComingMoviesUseCase;
   final GetTopRatedMoviesUseCaseProtocol getTopRatedMoviesUseCase;
   final GetMostPopularMoviesUseCaseProtocol getMostPopularMoviesUseCase;
+  final GetNowPlayingMoviesUseCaseProtocol getNowPlayingMoviesUseCase;
 
   HomeViewModel({
     required this.l10n,
     required this.getUpComingMoviesUseCase,
     required this.getTopRatedMoviesUseCase,
     required this.getMostPopularMoviesUseCase,
+    required this.getNowPlayingMoviesUseCase,
   });
 
   @override
@@ -81,6 +85,18 @@ class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
   }
 
   @override
+  List<MovieItemViewModelProtocol> get nowPlayingMoviesViewModels {
+    return _nowPlayingMovies.map((movie) {
+      return MovieItemViewModel(
+        l10n: l10n,
+        movie: movie,
+        showRate: true,
+        delegate: this,
+      );
+    }).toList();
+  }
+
+  @override
   void loadContent() {
     onRefresh();
   }
@@ -90,6 +106,7 @@ class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
     return Future.sync(() {
       _getTopRatedMovies();
       _getUpComingMovies();
+      _getNowPlayingMovies();
       _getMostPopularMovies();
     });
   }
@@ -97,6 +114,23 @@ class HomeViewModel extends HomeProtocol implements MovieItemViewModelDelegate {
   @override
   void didTapMovie({required int movieId}) {
     onTapMovie?.call(movieId);
+  }
+
+  void _getNowPlayingMovies() {
+    _setIsLoading(true);
+
+    getNowPlayingMoviesUseCase.execute(
+      success: (movies) {
+        _hasError = false;
+        _nowPlayingMovies.addAll(movies);
+        _setIsLoading(false);
+      },
+      failure: (error) {
+        _hasError = true;
+        _errorMessage = error.description;
+        _setIsLoading(false);
+      },
+    );
   }
 
   void _getMostPopularMovies() {
