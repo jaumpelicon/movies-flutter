@@ -1,21 +1,19 @@
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
 
-import '../../features/models/database/favorite_table.dart';
-import '../../features/models/database/table.dart';
+import '../../features/models/genre.dart';
+import '../../features/models/movie_favorite.dart';
 
 class DatabaseProvider {
   DatabaseProvider._();
 
   static DatabaseProvider instance = DatabaseProvider._();
 
-  late Database _db;
+  late Isar _db;
 
   bool _isInitialized = false;
 
-  List<Table> tables = [FavoritesTable()];
-
-  Database get db {
+  Isar get db {
     if (!_isInitialized) {
       throw Exception('Database not initialized');
     }
@@ -24,22 +22,11 @@ class DatabaseProvider {
   }
 
   Future<void> initialize() async {
-    final databasesPath = await getDatabasesPath();
+    final dir = await getApplicationDocumentsDirectory();
 
-    final path = join(databasesPath, 'movie_favorite.db');
-
-    _db = await openDatabase(
-      path,
-      version: 1,
-      onCreate: (Database db, int _) async {
-        final batch = db.batch();
-
-        for (final table in tables) {
-          batch.execute(table.create);
-        }
-
-        await batch.commit();
-      },
+    _db = await Isar.open(
+      [MovieFavoriteSchema, GenreSchema],
+      directory: dir.path,
     );
 
     _isInitialized = true;

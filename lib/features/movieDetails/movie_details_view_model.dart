@@ -2,6 +2,7 @@ import 'package:flutter_gen/gen_l10n/localization.dart';
 
 import '../favorites/useCases/get_favorite_movies_use_case.dart';
 import '../models/movie_details.dart';
+import '../models/movie_favorite.dart';
 import 'movie_details_view_controller.dart';
 import 'useCases/add_movie_favorite_use_case.dart';
 import 'useCases/get_movie_details_use_case.dart';
@@ -13,7 +14,7 @@ class MovieDetailsViewModel extends MovieDetailsProtocol {
   bool _isLoading = false;
   MovieDetail? _movie;
 
-  final _favoritesMovies = List<MovieDetail>.empty(growable: true);
+  final _favoritesMovies = List<MovieFavorite>.empty(growable: true);
 
   final Localization l10n;
   final int movieId;
@@ -41,7 +42,7 @@ class MovieDetailsViewModel extends MovieDetailsProtocol {
   bool get isLoading => _isLoading;
 
   @override
-  bool get isFavorite => _favoritesMovies.any((movie) => movie.id == _movie?.id);
+  bool get isFavorite => _favoritesMovies.any((movie) => movie.movieId == _movie?.id);
 
   @override
   MovieDetail? get movieInfos {
@@ -103,7 +104,9 @@ class MovieDetailsViewModel extends MovieDetailsProtocol {
       return;
     }
 
-    final isFavoriteMovie = _favoritesMovies.any((movie) => movie.id == _movie?.id);
+    final isFavoriteMovie = _favoritesMovies.any((movie) {
+      return movie.movieId == _movie?.id;
+    });
 
     if (isFavoriteMovie) {
       removeMovieFavoriteUseCase.execute(

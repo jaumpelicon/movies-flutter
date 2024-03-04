@@ -1,6 +1,6 @@
 import 'package:flutter_gen/gen_l10n/localization.dart';
 
-import '../../../features/models/movie_details.dart';
+import '../../../features/models/movie_favorite.dart';
 import '../../extension/extension.dart';
 import 'movie_favorite_item.dart';
 
@@ -9,33 +9,33 @@ abstract class MovieItemViewModelDelegate {
 }
 
 class MovieFavoriteItemViewModel extends MovieFavoriteItemViewModelProtocol {
-  final MovieDetail _movie;
+  final MovieFavorite _movie;
   final Localization l10n;
   final MovieItemViewModelDelegate? delegate;
 
   MovieFavoriteItemViewModel({
     required this.l10n,
-    required MovieDetail movie,
+    required MovieFavorite movie,
     required this.delegate,
     required bool showRate,
   }) : _movie = movie;
 
   @override
-  int get movieId => _movie.id;
+  int get movieId => _movie.movieId;
 
   @override
   String get movieTitle => '${_movie.title}\n';
 
   @override
-  String get moviePosterImg => _movie.posterImg;
+  String get moviePosterImg => _movie.posterPath ?? '';
 
   @override
   double get movieRate => _movie.rate.toDouble() / 2;
 
   @override
   String get releaseDate {
-    if (_movie.releaseDate.isNotEmpty) {
-      return _movie.releaseDate.toFormatDate();
+    if (_movie.releaseDate?.isNotEmpty ?? false) {
+      return _movie.releaseDate?.toFormatDate() ?? '';
     }
     return '01 Jan 1970';
   }

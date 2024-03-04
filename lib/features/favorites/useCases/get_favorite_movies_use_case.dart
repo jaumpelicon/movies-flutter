@@ -1,8 +1,8 @@
 import '../../../api/database/dao/favorite_dao.dart';
-import '../../models/movie_details.dart';
 import '../../../support/helpers/server_errors.dart';
+import '../../models/movie_favorite.dart';
 
-typedef Success = void Function(List<MovieDetail> movies);
+typedef Success = void Function(List<MovieFavorite> movies);
 typedef Failure = void Function(ServerError error);
 
 abstract class GetFavoritesUseCaseProtocol {

@@ -2,7 +2,7 @@ import 'package:flutter_gen/gen_l10n/localization.dart';
 
 import '../../support/components/movie_favorites/movie_favorite_item.dart';
 import '../../support/components/movie_favorites/movie_favorite_item_view_model.dart';
-import '../models/movie_details.dart';
+import '../models/movie_favorite.dart';
 import 'movie_favorites_controller.dart';
 import 'useCases/get_favorite_movies_use_case.dart';
 
@@ -10,7 +10,7 @@ class MovieFavoritesViewModel extends MovieFavoritesProtocol implements MovieIte
   String _errorMessage = '';
   bool _hasError = false;
   bool _isLoading = false;
-  final List<MovieDetail> _movies = [];
+  final _movies = List<MovieFavorite>.empty(growable: true);
 
   final Localization l10n;
   final GetFavoritesUseCaseProtocol getFavoritesMoviesUseCase;
